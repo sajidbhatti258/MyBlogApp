@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block title %} welcome to Programming
+blog{%endblock %} {% block content %}
+<div class="contaner-custom">
+  <div class="owl-carousel">
+    {% for cat in cat %}
+    <div class="card item" style="margin-left: 10px">
+      <div class="img-container">
+        <img src="/media/{{cat.image}}" class="responsive-img" />
+      </div>
+      <div class="card-content">
+        <b>{{cat.title}}</b>
+        <p class="truncate">{{cat.descripation }}</p>
+
+        <div class="container center-align mt20">
+          <a href="category/{{cat.url}}" class="btn bg-primary">view</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      {%for p in post %}
+
+      <div class="row">
+        <div class="col s12 m8">
+          {{p.content |truncatewords:60 | safe}}
+          <div class="mt20">
+            <a href="blog/{{p.url}}" class="btn bg-primary">Read More..</a>
+          </div>
+        </div>
+
+        <div class="col s12 m4" id="imge">
+          <img
+            src="/media/{{p.image}}"
+            class="responsive-img"
+            style="margin: 50px"
+          />
+        </div>
+      </div>
+
+      {%endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %} welcome to Programming
+blog{%endblock %} {% block content %}
+<div class="container-custom">
+  <h3>{{cate.title}}</h3>
+  <div class="img-container">
+    <img
+      src="/media/{{cate.image}}"
+      class="responsive-img"
+      alt=""
+      style="max-height: 450px; width: 100%; object-fit: cover"
+    />
+  </div>
+
+  <div class="collection">
+    {% for p in post %}
+    <a href="/blog/{{p.url}}" class="collection-item">{{p.title}}</a>
+    {% empty%}
+    <h4 style="text-align: center">No post in this catgeroy</h4>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
